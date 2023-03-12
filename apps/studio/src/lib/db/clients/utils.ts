@@ -73,15 +73,12 @@ function wrapIdentifier(value) {
 }
 
 
-export function buildFilterString(filters, columns = []) {
+export function buildFilterString(filters, _columns) {
   let filterString = ""
   let filterParams = []
   if (filters && _.isArray(filters) && filters.length > 0) {
     filterString = "WHERE " + filters.map((item) => {
-      const column = columns.find((c) => c.columnName === item.field)
-      const field = column?.dataType.toUpperCase().includes('BINARY') ?
-        `HEX(${wrapIdentifier(item.field)})` :
-        wrapIdentifier(item.field);
+      const field = wrapIdentifier(item.field);
 
       if (item.type === 'in') {
         const questionMarks = _.isArray(item.value) ?

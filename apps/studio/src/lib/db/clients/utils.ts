@@ -82,15 +82,12 @@ function wrapIdentifier(value) {
 }
 
 
-export function buildFilterString(filters: TableFilter[], columns = []) {
+export function buildFilterString(filters: TableFilter[], _columns) {
   let filterString = ""
   let filterParams = []
   if (filters && _.isArray(filters) && filters.length > 0) {
     const allFilters = filters.map((item) => {
-      const column = columns.find((c) => c.columnName === item.field)
-      const field = column?.dataType.toUpperCase().includes('BINARY') ?
-        `HEX(${wrapIdentifier(item.field)})` :
-        wrapIdentifier(item.field);
+      const field = wrapIdentifier(item.field);
 
       if (item.type === 'in') {
         const questionMarks = _.isArray(item.value) ?

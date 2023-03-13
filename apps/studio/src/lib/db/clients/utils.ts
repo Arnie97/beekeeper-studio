@@ -80,6 +80,10 @@ export function buildFilterString(filters, _columns) {
     filterString = "WHERE " + filters.map((item) => {
       const field = wrapIdentifier(item.field);
 
+      if (item.type.endsWith('null')) {
+        return `${field} ${item.type}`
+      }
+
       if (item.type === 'in') {
         const questionMarks = _.isArray(item.value) ?
           item.value.map(() => '?').join(',')
@@ -87,6 +91,7 @@ export function buildFilterString(filters, _columns) {
 
         return `${field} ${item.type} (${questionMarks})`
       }
+
       return `${field} ${item.type} ?`
     }).join(" AND ")
 

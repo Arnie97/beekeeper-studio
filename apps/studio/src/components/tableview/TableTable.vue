@@ -77,8 +77,8 @@
               <div class="filter-wrap">
                 <input
                   class="form-control"
-                  type="text"
                   v-model="filter.value"
+                  :type=builderValueType
                   :placeholder=builderPlaceholder
                   ref="valueInput"
                 />
@@ -245,7 +245,9 @@ export default Vue.extend({
       filterTypes: {
         equals: "=",
         "does not equal": "!=",
-        like: "like",
+        "like": "like",
+        "is null": "is null",
+        "is not null": "is not null",
         "less than": "<",
         "less than or equal": "<=",
         "greater than": ">",
@@ -497,6 +499,9 @@ export default Vue.extend({
     builderPlaceholder() {
       return this.filter.type === 'in' ? `Enter values separated by comma, eg: foo,bar` : 'Enter Value'
     },
+    builderValueType() {
+      return this.filter.type.endsWith('null') ? 'hidden' : 'text'
+    },
     pendingChangesCount() {
       return this.pendingChanges.inserts.length
              + this.pendingChanges.updates.length
@@ -703,6 +708,14 @@ export default Vue.extend({
     filterForTabulator() {
       if (this.filterMode === FILTER_MODE_RAW && this.filterRaw) {
         return this.filterRaw
+      } else if (
+        this.filterMode === FILTER_MODE_BUILDER &&
+        this.filter.type.endsWith('null') && this.filter.field
+      ) {
+        return [{
+          ...this.filter,
+          value: ''
+        }]
       } else if (
         this.filterMode === FILTER_MODE_BUILDER &&
         this.filter.type && this.filter.field && this.filter.value

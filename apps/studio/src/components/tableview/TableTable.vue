@@ -1354,7 +1354,7 @@ export default Vue.extend({
         !_.isEmpty(this.filter.value) &&
         _.isEmpty(this.filterRaw)
       ) {
-        const rawFilter = _.join([this.filter.field, this.filter.type, this.filter.value], ' ')
+        const rawFilter = _.join([this.filter.field, this.filter.type, JSON.stringify(this.filter.value)], ' ')
         this.filterRaw = rawFilter
       }
 

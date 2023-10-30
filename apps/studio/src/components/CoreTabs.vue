@@ -33,13 +33,6 @@
           class="btn-fab add-query"
         ><i class=" material-icons">add_circle</i></a>
       </span>
-      <a
-        @click.prevent="showUpgradeModal"
-        class="btn btn-brand btn-icon btn-upgrade"
-        v-tooltip="'Upgrade for: backup/restore, import from CSV, larger query results, and more!'"
-      >
-        <i class="material-icons">stars</i> Upgrade
-      </a>
     </div>
     <div class="tab-content">
       <div class="empty flex-col  expand">

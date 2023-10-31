@@ -67,8 +67,8 @@ const platformInfo = {
   updatesDisabled,
   appVersion: testMode ? 'test-mode' : e.app.getVersion(),
   cloudUrl: isDevEnv ? 'https://staging.beekeeperstudio.io' : 'https://app.beekeeperstudio.io',
-  isCommunity: true,
-  isUltimate: false,
+  isCommunity: false,
+  isUltimate: true,
   // cloudUrl: isDevEnv ? 'http://localhost:3000' : 'https://app.beekeeperstudio.io'
 }
 

@@ -36,6 +36,8 @@
     "vue-cli-plugin-electron-builder": "latest"
   },
   "resolutions": {
+    "@achrinza/node-ipc": "^9.2.8",
+    "@azure/msal-node": "^2.6.1",
     "nan": "2.17.0",
     "node-abi": "^3.34.0",
     "cpu-features": "./.yarn/packages/empty-package",

@@ -27,7 +27,6 @@
         <div class="small-wrap expand">
           <div
             class="card-flat padding"
-            :class="determineLabelColor"
           >
             <div class="flex flex-between">
               <h3

@@ -81,6 +81,10 @@ export function buildFilterString(filters: TableFilter[], _columns) {
     const allFilters = filters.map((item) => {
       const field = wrapIdentifier(item.field);
 
+      if (item.type.endsWith('null')) {
+        return `${field} ${item.type}`
+      }
+
       if (item.type === 'in') {
         const questionMarks = _.isArray(item.value) ?
           item.value.map(() => '?').join(',')

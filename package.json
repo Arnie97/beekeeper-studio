@@ -35,8 +35,13 @@
     "log-timestamp": "latest"
   },
   "resolutions": {
+    "@achrinza/node-ipc": "^9.2.8",
+    "@azure/msal-node": "^2.6.1",
+    "app-builder-bin": "^3.7.1",
+    "electron-builder": "24.9.1",
     "nan": "2.17.0",
     "node-abi": "^3.34.0",
+    "node-gyp": "^10.0.1",
     "cpu-features": "./.yarn/packages/empty-package",
     "electron-builder": "23.0.2"
   }

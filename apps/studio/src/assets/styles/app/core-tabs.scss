@@ -279,6 +279,9 @@
         visibility: hidden;
       }
     }
+    .is-null .filter-wrap {
+      visibility: hidden;
+    }
     .select-wrap {
       padding-right: $gutter-h;
       border-radius: $input-radius;

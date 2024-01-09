@@ -125,7 +125,10 @@
                 </option>
               </select>
             </div>
-            <div class="expand filter">
+            <div
+              class="expand filter"
+              :class="filter.type.endsWith('null') ? 'is-null' : '' "
+            >
               <div class="filter-wrap">
                 <input
                   class="form-control filter-value"
@@ -234,6 +237,8 @@ export default Vue.extend({
         "greater than": ">",
         "greater than or equal": ">=",
         in: "in",
+        "is null": "is null",
+        "is not null": "is not null",
       },
       filters: this.initialFilters ?? [
         {

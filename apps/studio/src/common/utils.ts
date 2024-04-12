@@ -185,7 +185,7 @@ export function normalizeFilters(filters: TableFilter[]) {
   const normalized: TableFilter[] = [];
   for (const filter of filters as TableFilter[]) {
     if (!(filter.type && filter.field && (filter.value || filter.type.includes('is')))) continue;
-    if (filter.type === "in") {
+    if (filter.type.endsWith('in')) {
       const value = (filter.value as string).split(/\s*,\s*/);
       normalized.push({ ...filter, value });
     } else {

@@ -1126,7 +1126,7 @@ export class PostgresClient extends BasicDatabaseClient<QueryResult> {
     } else if (filters && filters.length > 0) {
       let paramIdx = 1
       const allFilters = filters.map((item) => {
-        if (item.type === 'in' && _.isArray(item.value)) {
+        if (item.type.endsWith('in') && _.isArray(item.value)) {
           const values = item.value.map((v, idx) => {
             return options.inlineParams
               ? knex.raw('?', [v]).toQuery()

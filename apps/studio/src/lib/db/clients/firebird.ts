@@ -138,7 +138,7 @@ function buildFilterString(filters: TableFilter[], columns = []) {
         ? `HEX(${item.field})`
         : item.field;
 
-      if (item.type === "in") {
+      if (item.type.endsWith('in')) {
         const questionMarks = _.isArray(item.value)
           ? item.value.map(() => "?").join(",")
           : "?";

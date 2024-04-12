@@ -85,7 +85,7 @@ export function buildFilterString(filters: TableFilter[], _columns) {
         return `${field} ${item.type}`
       }
 
-      if (item.type === 'in') {
+      if (item.type.endsWith('in')) {
         const questionMarks = _.isArray(item.value) ?
           item.value.map(() => '?').join(',')
           : '?'
@@ -112,7 +112,7 @@ export function applyChangesSql(changes: TableChanges, knex: any): string {
     ...buildDeleteQueries(knex, changes.deletes || [])
   ].filter((i) => !!i && _.isString(i)).join(';')
 
-  if (queries.length) 
+  if (queries.length)
     return queries.endsWith(';') ? queries : `${queries};`
 }
 

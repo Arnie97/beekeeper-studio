@@ -221,7 +221,7 @@ export class OracleClient extends BasicDatabaseClient<DriverResult> {
     let filterString = ""
     if (filters && filters.length > 0) {
       const allFilters = filters.map((item) => {
-        if (item.type === 'in') {
+        if (item.type.endsWith('in')) {
           const valuesIn = item.value.map(v => D.escapeString(v, true))
           return `${D.wrapIdentifier(item.field)} IN (${valuesIn.join(',')})`
         } else if (item.type.includes('is')) {

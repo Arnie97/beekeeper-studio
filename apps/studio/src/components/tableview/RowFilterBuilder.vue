@@ -253,12 +253,14 @@ export default Vue.extend({
       filterTypes: {
         equals: "=",
         "does not equal": "!=",
-        like: "like",
+        "like": "like",
+        "not like": "not like",
+        "in": "in",
+        "not in": "not in",
         "less than": "<",
         "less than or equal": "<=",
         "greater than": ">",
         "greater than or equal": ">=",
-        in: "in",
         "is null": "is",
         "is not null": "is not"
       },

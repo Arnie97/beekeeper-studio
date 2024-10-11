@@ -17,7 +17,7 @@ const externals = ['better-sqlite3',
   'libsql',
 ]
 module.exports = {
-  transpileDependencies: ['@aws-sdk/*', 'tabulator-tables'],
+  transpileDependencies: ['@aws-sdk/*', '@azure/msal-node', 'tabulator-tables'],
   pluginOptions: {
     electronBuilder: {
       nodeModulesPath: ['./node_modules', '../../node_modules'],
